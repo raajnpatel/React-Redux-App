@@ -3,30 +3,38 @@ import { connect } from "react-redux";
 import Loader from "react-loader-spinner";
 
 import { getData } from "../actions";
+import WeatherData from "./weatherData";
 
-const WebcamList = props => {
+const Weather = props => {
     return (
-        <>
+        <div>
             <button onClick={props.getData}>
                 {props.isLoading ? (
-                    <Loader type="TailSpin" color="#00BFFF" height="15" width="100" />
+                    <Loader type="TailSpin" color="#00BFFF" height={150} width={150} />
                 ) : (
-                    "Let Check that Weather Adnan"
+                    "Click Here!"
                 )}
             </button>
-            {/* {props.webcams &&
-        props.webcams.map(cam => cam )} */}
-        </>
+            {props.weather &&
+            props.weather.map((data, index) => (
+                <WeatherData
+                    key={index}
+                    weather={props.weather}
+                    index={index}
+                    dummy={data}
+                />
+            ))}
+        </div>
     );
 };
 
 const mapStateToProps = state => {
     return {
         isLoading: state.isLoading,
-        webcams: state.webcams
+        weather: state.weather
     };
 };
 export default connect(
     mapStateToProps,
     { getData }
-)(WebcamList);
+)(Weather);

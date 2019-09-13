@@ -1,12 +1,13 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Loader from "react-loader-spinner";
+import React from "react";
+import "./App.scss";
+import Weather from "./components/weather";
 
 function App() {
   return (
-    <Loader/>
+      <div className="App">
+        Welcome!
+        <Weather />
+      </div>
   );
 }
 
